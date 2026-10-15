@@ -1,0 +1,7 @@
+{
+  "name": "MapBox",
+  "packageManager": "yarn@4.18.0",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
