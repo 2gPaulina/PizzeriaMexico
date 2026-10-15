@@ -1,0 +1,214 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h1",
+        "name": "Domino's Pizza - Zona Plateada",
+        "brand": "Domino's",
+        "municipio": "Pachuca de Soto",
+        "address": "Av. Camino Real de la Plata 107",
+        "colonia": "Zona Plateada",
+        "telefono": "771 719 5050",
+        "horario": "11:00 - 22:30"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.7712, 20.0985] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h2",
+        "name": "Domino's Pachuca I (Everardo Márquez)",
+        "brand": "Domino's",
+        "municipio": "Pachuca de Soto",
+        "address": "Blvd. Everardo Márquez 208",
+        "colonia": "Ex Hacienda de Coscotitlán",
+        "telefono": "771 714 2000",
+        "horario": "11:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.7452, 20.1085] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h3",
+        "name": "Little Caesars - Revolución",
+        "brand": "Little Caesars",
+        "municipio": "Pachuca de Soto",
+        "address": "Av. Revolución 1105",
+        "colonia": "Periodistas",
+        "telefono": "800 522 3727",
+        "horario": "10:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.7389, 20.1221] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h4",
+        "name": "Domino's Tulancingo Centro",
+        "brand": "Domino's",
+        "municipio": "Tulancingo de Bravo",
+        "address": "Calle Ignacio Zaragoza 204",
+        "colonia": "Centro",
+        "telefono": "775 753 1000",
+        "horario": "11:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.3695, 20.0833] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h5",
+        "name": "Little Caesars - Tulancingo Carretera",
+        "brand": "Little Caesars",
+        "municipio": "Tulancingo de Bravo",
+        "address": "Carr. Federal México-Tuxpan 1205",
+        "colonia": "San Nicolás",
+        "telefono": "800 522 3727",
+        "horario": "10:30 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.3810, 20.0920] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h6",
+        "name": "Pizzería La Bella Italia - Tulancingo",
+        "brand": "Italiana",
+        "municipio": "Tulancingo de Bravo",
+        "address": "Calle Hidalgo 108",
+        "colonia": "Centro",
+        "telefono": "775 755 4030",
+        "horario": "12:00 - 21:30"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.3670, 20.0815] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h7",
+        "name": "Domino's Tula Centro",
+        "brand": "Domino's",
+        "municipio": "Tula de Allende",
+        "address": "Calle Zaragoza 102",
+        "colonia": "Centro",
+        "telefono": "773 732 2500",
+        "horario": "11:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-99.3425, 20.0542] }
+    },
+    {
+      "type": "Feature", "properties": {
+        "id": "h8",
+        "name": "Little Caesars - Tula Iturbe",
+        "brand": "Little Caesars",
+        "municipio": "Tula de Allende",
+        "address": "Calzada Melchor Ocampo 405",
+        "colonia": "El Carmen",
+        "telefono": "800 522 3727",
+        "horario": "10:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-99.3380, 20.0510] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h9",
+        "name": "Domino's Tizayuca",
+        "brand": "Domino's",
+        "municipio": "Tizayuca",
+        "address": "Av. Juárez Sur 45",
+        "colonia": "Centro",
+        "telefono": "779 796 3000",
+        "horario": "11:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.9812, 19.8425] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h10",
+        "name": "Little Caesars - Tizayuca Fuentes",
+        "brand": "Little Caesars",
+        "municipio": "Tizayuca",
+        "address": "Carretera Federal México-Pachuca Km 48",
+        "colonia": "Fuentes de Tizayuca",
+        "telefono": "800 522 3727",
+        "horario": "10:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.9750, 19.8350] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h11",
+        "name": "Pizzería El Horno de Actopan",
+        "brand": "Artesanal",
+        "municipio": "Actopan",
+        "address": "Calle 5 de Mayo 12",
+        "colonia": "Centro",
+        "telefono": "772 727 1890",
+        "horario": "12:00 - 21:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.9442, 20.2688] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h12",
+        "name": "Pizza Real del Monte",
+        "brand": "Local",
+        "municipio": "Mineral del Monte",
+        "address": "Av. Hidalgo 8",
+        "colonia": "Centro Histórico",
+        "telefono": "771 797 0045",
+        "horario": "11:00 - 20:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.6715, 20.1392] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h13",
+        "name": "Benedetti's Pizza - Centro Pachuca",
+        "brand": "Benedetti's",
+        "municipio": "Pachuca de Soto",
+        "address": "Guerrero 602",
+        "colonia": "Centro Histórico",
+        "telefono": "771 715 4400",
+        "horario": "11:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.7325, 20.1260] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h14",
+        "name": "Ponte Pizza Pachuca Centro",
+        "brand": "Ponte Pizza",
+        "municipio": "Pachuca de Soto",
+        "address": "C. Cayetano Gómez Pérez 205",
+        "colonia": "Morelos",
+        "telefono": "771 713 9090",
+        "horario": "12:00 - 21:30"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.7332, 20.1255] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "h15",
+        "name": "Pizza Hut - Galerías Pachuca",
+        "brand": "Pizza Hut",
+        "municipio": "Pachuca de Soto",
+        "address": "Blvd. Felipe Ángeles 1500",
+        "colonia": "Zona Plateada",
+        "telefono": "771 710 7000",
+        "horario": "11:00 - 22:00"
+      },
+      "geometry": { "type": "Point", "coordinates": [-98.7611, 20.1018] }
+    }
+  ]
+}

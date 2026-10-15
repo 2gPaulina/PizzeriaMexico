@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzerías en Pachuca de Soto - Mapbox API</title>
+    <title>Geoportal de Pizzerías en Hidalgo - Mapbox API</title>
     
     <!-- Mapbox GL JS API CSS y JS -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js"></script>
@@ -25,7 +25,7 @@
 
         /* Panel Lateral */
         #sidebar {
-            width: 380px;
+            width: 400px;
             background: #ffffff;
             border-right: 1px solid #e0e0e0;
             display: flex;
@@ -35,82 +35,154 @@
         }
 
         .header {
-            background: #e65100;
+            background: #d84315;
             color: white;
-            padding: 20px;
+            padding: 18px 20px;
         }
 
         .header h1 {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
         }
 
         .header p {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             opacity: 0.9;
         }
 
-        .search-box {
-            padding: 15px;
+        /* Controles de Filtros */
+        .controls {
+            padding: 12px 15px;
+            background: #fafafa;
             border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .search-box input {
+        .search-box input, .select-box select {
             width: 100%;
-            padding: 10px 15px;
+            padding: 9px 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             outline: none;
+            background: white;
         }
 
-        .search-box input:focus {
-            border-color: #e65100;
+        .search-box input:focus, .select-box select:focus {
+            border-color: #d84315;
+        }
+
+        /* Barra de Mapbox Style Selector y Reset */
+        .map-tools {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-reset {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-reset:hover {
+            background: #1b5e20;
+        }
+
+        /* Indicadores / Dashboard Metrics */
+        .metrics-bar {
+            display: flex;
+            background: #f0f4f8;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 15px;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .metric-item {
+            flex: 1;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #d84315;
+        }
+
+        .metric-label {
+            font-size: 0.72rem;
+            color: #666;
+            text-transform: uppercase;
         }
 
         /* Lista de Pizzerías */
         #pizzeria-list {
             flex: 1;
             overflow-y: auto;
-            padding: 10px;
+            padding: 12px;
         }
 
         .pizza-card {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 12px 15px;
+            padding: 12px;
             margin-bottom: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .pizza-card:hover {
-            border-color: #e65100;
+            border-color: #d84315;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
         .pizza-card h3 {
-            font-size: 1rem;
-            color: #333;
+            font-size: 0.98rem;
+            color: #222;
             margin-bottom: 4px;
         }
 
         .pizza-card p {
-            font-size: 0.82rem;
-            color: #666;
+            font-size: 0.81rem;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .pizza-info-extra {
+            font-size: 0.75rem;
+            color: #777;
             margin-bottom: 6px;
+        }
+
+        .badges-container {
+            display: flex;
+            gap: 6px;
         }
 
         .badge {
             display: inline-block;
             padding: 2px 8px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             border-radius: 12px;
-            background: #fff3e0;
-            color: #e65100;
+            background: #fbe9e7;
+            color: #d84315;
             font-weight: bold;
+        }
+
+        .badge-muni {
+            background: #e8f5e9;
+            color: #2e7d32;
         }
 
         /* Contenedor del Mapa Mapbox */
@@ -121,31 +193,39 @@
 
         /* Popups de Mapbox */
         .mapboxgl-popup-content {
-            padding: 15px;
+            padding: 14px;
             border-radius: 8px;
+            max-width: 240px;
         }
 
         .popup-title {
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #d84315;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .popup-address {
-            font-size: 0.85rem;
-            color: #555;
+            font-size: 0.82rem;
+            color: #444;
+            margin-bottom: 6px;
+        }
+
+        .popup-phone {
+            font-size: 0.78rem;
+            color: #666;
             margin-bottom: 8px;
         }
 
         .popup-btn {
             display: inline-block;
-            background: #e65100;
+            background: #d84315;
             color: white;
             text-decoration: none;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -154,88 +234,131 @@
     <!-- Panel de Control Lateral -->
     <div id="sidebar">
         <div class="header">
-            <h1>🍕 Pizzerías Pachuca</h1>
-            <p>Consumo de API Mapbox GL JS</p>
+            <h1>🍕 Pizzerías en Hidalgo</h1>
+            <p>Geoportal Estatal de Servicios | Node.js & Mapbox GL JS</p>
         </div>
 
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Buscar pizzería o colonia..." oninput="filterPizzerias()">
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar pizzería, colonia o marca..." oninput="applyFilters()">
+            </div>
+
+            <div class="select-box">
+                <select id="muniSelect" onchange="applyFilters()">
+                    <option value="todos">Todos los Municipios de Hidalgo</option>
+                    <option value="Pachuca de Soto">Pachuca de Soto</option>
+                    <option value="Tulancingo de Bravo">Tulancingo de Bravo</option>
+                    <option value="Tula de Allende">Tula de Allende</option>
+                    <option value="Tizayuca">Tizayuca</option>
+                    <option value="Actopan">Actopan</option>
+                    <option value="Mineral del Monte">Mineral del Monte</option>
+                </select>
+            </div>
+
+            <div class="map-tools">
+                <div class="select-box" style="flex:1;">
+                    <select id="styleSelect" onchange="changeMapStyle(this.value)">
+                        <option value="mapbox://styles/mapbox/streets-v12">Mapa Calles</option>
+                        <option value="mapbox://styles/mapbox/satellite-streets-v12">Satélite Vectorial</option>
+                        <option value="mapbox://styles/mapbox/dark-v11">Modo Oscuro</option>
+                    </select>
+                </div>
+                <button class="btn-reset" onclick="fitHidalgoBounds()">Ver Hidalgo 🗺️</button>
+            </div>
+        </div>
+
+        <!-- Dashboard / Métricas -->
+        <div class="metrics-bar">
+            <div class="metric-item">
+                <div class="metric-value" id="count-visible">0</div>
+                <div class="metric-label">Pizzerías</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value" id="count-munis">0</div>
+                <div class="metric-label">Municipios</div>
+            </div>
         </div>
 
         <div id="pizzeria-list">
-            <!-- Se llena dinámicamente mediante JavaScript -->
+            <!-- Se llena dinámicamente -->
         </div>
     </div>
 
-    <!-- Mapa de Mapbox -->
+    <!-- Mapa -->
     <div id="map"></div>
 
     <script>
-    // 🔑 REEMPLAZA ESTA CADENA CON TU ACCESS TOKEN PERSONAL DE MAPBOX (pk.eyJ...)
-    mapboxgl.accessToken = 'pk.eyJ1IjoicGF1bGluYTExMDUiLCJhIjoiY212NzRvbXAzMDM0cTJ6cTBkZnJkaXMzNSJ9.SLmoTlurwiYBsvX-knrKSw'; 
-    // Colección completa de las 35 pizzerías en Pachuca
-    const pizzeriasGeoJSON = {
-        "type": "FeatureCollection",
-        "features": [
-            { "type": "Feature", "properties": { "id": 1, "nombre": "Domino's Pizza - Zona Plateada", "brand": "Domino's", "direccion": "Av. Camino Real de la Plata 107", "rating": 4.4 }, "geometry": { "type": "Point", "coordinates": [-98.7712, 20.0985] } },
-            { "type": "Feature", "properties": { "id": 2, "nombre": "Domino's Pachuca I (Everardo Márquez)", "brand": "Domino's", "direccion": "Blvd. Everardo Márquez 208", "rating": 4.3 }, "geometry": { "type": "Point", "coordinates": [-98.7485, 20.1092] } },
-            { "type": "Feature", "properties": { "id": 3, "nombre": "Domino's Pachuca II (Rovirosa)", "brand": "Domino's", "direccion": "Carr. México - Pachuca Km. 84.5", "rating": 4.2 }, "geometry": { "type": "Point", "coordinates": [-98.7790, 20.0760] } },
-            { "type": "Feature", "properties": { "id": 4, "nombre": "Domino's Pachuca III (Tulancingo)", "brand": "Domino's", "direccion": "Carr. Pachuca-Tulancingo 113-C", "rating": 4.1 }, "geometry": { "type": "Point", "coordinates": [-98.7180, 20.1080] } },
-            { "type": "Feature", "properties": { "id": 5, "nombre": "Domino's Explanada Pachuca", "brand": "Domino's", "direccion": "Autopista México-Pachuca 6201", "rating": 4.5 }, "geometry": { "type": "Point", "coordinates": [-98.7885, 20.0512] } },
-            { "type": "Feature", "properties": { "id": 6, "nombre": "Domino's Plaza Universidad", "brand": "Domino's", "direccion": "Carr. Pachuca-Tulancingo Km 2.5", "rating": 4.3 }, "geometry": { "type": "Point", "coordinates": [-98.7095, 20.0988] } },
-            { "type": "Feature", "properties": { "id": 7, "nombre": "Domino's Pizza - Madero", "brand": "Domino's", "direccion": "Av. Francisco I. Madero 800", "rating": 4.3 }, "geometry": { "type": "Point", "coordinates": [-98.7280, 20.1190] } },
-            { "type": "Feature", "properties": { "id": 8, "nombre": "Little Caesars - Revolución", "brand": "Little Caesars", "direccion": "Av. Revolución 1104, Periodistas", "rating": 4.2 }, "geometry": { "type": "Point", "coordinates": [-98.7389, 20.1221] } },
-            { "type": "Feature", "properties": { "id": 9, "nombre": "Little Caesars - Colosio", "brand": "Little Caesars", "direccion": "Blvd. Luis Donaldo Colosio 1500", "rating": 4.1 }, "geometry": { "type": "Point", "coordinates": [-98.7650, 20.1180] } },
-            { "type": "Feature", "properties": { "id": 10, "nombre": "Little Caesars - Forjadores", "brand": "Little Caesars", "direccion": "Carr. Pachuca-Ciudad Sahagún", "rating": 4.0 }, "geometry": { "type": "Point", "coordinates": [-98.7510, 20.0720] } },
-            { "type": "Feature", "properties": { "id": 11, "nombre": "Little Caesars - Tulipanes", "brand": "Little Caesars", "direccion": "Blvd. Tulipanes 201, Mineral de la Reforma", "rating": 4.2 }, "geometry": { "type": "Point", "coordinates": [-98.7590, 20.0680] } },
-            { "type": "Feature", "properties": { "id": 12, "nombre": "Little Caesars - Gran Sur", "brand": "Little Caesars", "direccion": "Av. Principal Sur 402", "rating": 4.1 }, "geometry": { "type": "Point", "coordinates": [-98.7780, 20.0590] } },
-            { "type": "Feature", "properties": { "id": 13, "nombre": "Little Caesars - Abasolo", "brand": "Little Caesars", "direccion": "Calle Mariano Abasolo 601, Centro", "rating": 4.3 }, "geometry": { "type": "Point", "coordinates": [-98.7360, 20.1285] } },
-            { "type": "Feature", "properties": { "id": 14, "nombre": "Pizza Hut - Galerías Pachuca", "brand": "Pizza Hut", "direccion": "Plaza Galerías Pachuca", "rating": 4.3 }, "geometry": { "type": "Point", "coordinates": [-98.7611, 20.1018] } },
-            { "type": "Feature", "properties": { "id": 15, "nombre": "Pizza Hut - Plaza Bella", "brand": "Pizza Hut", "direccion": "Av. Revolución 1300", "rating": 4.1 }, "geometry": { "type": "Point", "coordinates": [-98.7420, 20.1185] } },
-            { "type": "Feature", "properties": { "id": 16, "nombre": "Benedetti's Pizza - Centro", "brand": "Benedetti's", "direccion": "Calle Guerrero 402, Centro", "rating": 4.1 }, "geometry": { "type": "Point", "coordinates": [-98.7325, 20.1260] } },
-            { "type": "Feature", "properties": { "id": 17, "nombre": "Benedetti's Pizza - San Javier", "brand": "Benedetti's", "direccion": "Blvd. Valle de San Javier 701", "rating": 4.2 }, "geometry": { "type": "Point", "coordinates": [-98.7495, 20.1110] } },
-            { "type": "Feature", "properties": { "id": 18, "nombre": "Pizza Nova - San Javier", "brand": "Local", "direccion": "Valle de San Javier 301", "rating": 4.5 }, "geometry": { "type": "Point", "coordinates": [-98.7521, 20.1132] } },
-            { "type": "Feature", "properties": { "id": 19, "nombre": "Alquimia Pizza - Centro", "brand": "Artesanal", "direccion": "Calle Hidalgo 502, Centro", "rating": 4.7 }, "geometry": { "type": "Point", "coordinates": [-98.7348, 20.1262] } },
-            { "type": "Feature", "properties": { "id": 20, "nombre": "Ponte Pizza Pachuca Centro", "brand": "Local", "direccion": "Av. Juárez 302, Centro", "rating": 4.2 }, "geometry": { "type": "Point", "coordinates": [-98.7362, 20.1245] } },
-            { "type": "Feature", "properties": { "id": 21, "nombre": "Machin Pizza & Bistro", "brand": "Local", "direccion": "Calle Mina 102, Centro", "rating": 4.6 }, "geometry": { "type": "Point", "coordinates": [-98.7335, 20.1220] } },
-            { "type": "Feature", "properties": { "id": 22, "nombre": "Monte Pizza - Cubitos", "brand": "Local", "direccion": "Av. Pino Suárez 405", "rating": 4.0 }, "geometry": { "type": "Point", "coordinates": [-98.7405, 20.1102] } },
-            { "type": "Feature", "properties": { "id": 23, "nombre": "Cheesy Pizza Pachuca", "brand": "Local", "direccion": "Calle Matamoros 210, Centro", "rating": 4.3 }, "geometry": { "type": "Point", "coordinates": [-98.7360, 20.1205] } },
-            { "type": "Feature", "properties": { "id": 24, "nombre": "Pizzería La Bella Italia", "brand": "Italiana", "direccion": "Av. Cuauhtémoc 802", "rating": 4.6 }, "geometry": { "type": "Point", "coordinates": [-98.7510, 20.1100] } },
-            { "type": "Feature", "properties": { "id": 25, "nombre": "L'Ancora Pizza & Pasta", "brand": "Italiana", "direccion": "Zona Plateada 204", "rating": 4.8 }, "geometry": { "type": "Point", "coordinates": [-98.7730, 20.0965] } },
-            { "type": "Feature", "properties": { "id": 26, "nombre": "Pizzería Gracias a Dios", "brand": "Local", "direccion": "Col. Doctores 112", "rating": 4.4 }, "geometry": { "type": "Point", "coordinates": [-98.7300, 20.1120] } },
-            { "type": "Feature", "properties": { "id": 27, "nombre": "Pizza Express Real del Monte Rd", "brand": "Local", "direccion": "Carr. a Real del Monte Km 1", "rating": 4.1 }, "geometry": { "type": "Point", "coordinates": [-98.7185, 20.1340] } },
-            { "type": "Feature", "properties": { "id": 28, "nombre": "Pizzería Don Corleone", "brand": "Artesanal", "direccion": "Av. Juárez 905", "rating": 4.5 }, "geometry": { "type": "Point", "coordinates": [-98.7380, 20.1160] } },
-            { "type": "Feature", "properties": { "id": 29, "nombre": "Pizzería Rincón Italiano", "brand": "Italiana", "direccion": "Col. Morelos, Calle Venustiano Carranza", "rating": 4.4 }, "geometry": { "type": "Point", "coordinates": [-98.7450, 20.1280] } },
-            { "type": "Feature", "properties": { "id": 30, "nombre": "Pizza & Come - Colosio", "brand": "Local", "direccion": "Blvd. Colosio Km 8", "rating": 4.2 }, "geometry": { "type": "Point", "coordinates": [-98.7580, 20.1150] } },
-            { "type": "Feature", "properties": { "id": 31, "nombre": "Pizza Bella Pachuca", "brand": "Local", "direccion": "Av. Constituyentes 301", "rating": 4.3 }, "geometry": { "type": "Point", "coordinates": [-98.7620, 20.1080] } },
-            { "type": "Feature", "properties": { "id": 32, "nombre": "Pizzería La Tradicional", "brand": "Local", "direccion": "Col. Piracantos, Av. 8", "rating": 4.0 }, "geometry": { "type": "Point", "coordinates": [-98.7820, 20.1180] } },
-            { "type": "Feature", "properties": { "id": 33, "nombre": "Pizza Nostra - Plaza Universidad", "brand": "Artesanal", "direccion": "Blvd. Colosio 2000", "rating": 4.5 }, "geometry": { "type": "Point", "coordinates": [-98.7120, 20.0950] } },
-            { "type": "Feature", "properties": { "id": 34, "nombre": "Pizzería Mamma Mia", "brand": "Local", "direccion": "Calle Xicoténcatl 104, Centro", "rating": 4.2 }, "geometry": { "type": "Point", "coordinates": [-98.7310, 20.1240] } },
-            { "type": "Feature", "properties": { "id": 35, "nombre": "Pizzería La Sierra", "brand": "Local", "direccion": "Av. Ferrocarril Central 500", "rating": 4.1 }, "geometry": { "type": "Point", "coordinates": [-98.7420, 20.0980] } }
-        ]
-    };
+  mapboxgl.accessToken = 'pk.eyJ1IjoicGF1bGluYTExMDUiLCJhIjoiY212NzRvbXAzMDM0cTJ6cTBkZnJkaXMzNSJ9.SLmoTlurwiYBsvX-knrKSw';
+    let geojsonData = { type: "FeatureCollection", features: [] };
+    const markers = [];
 
-    // Inicializar Mapa de Mapbox GL JS centrado en Pachuca de Soto
+    // Mapa enfocado inicialmente en el Estado de Hidalgo
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [-98.7592, 20.1165],
-        zoom: 12.2
+        center: [-98.7592, 20.1165], // Coordenadas iniciales
+        zoom: 9.5
     });
 
     map.addControl(new mapboxgl.NavigationControl());
 
-    const markers = [];
-
+    // Cargar datos GeoJSON desde el servidor Node.js
     map.on('load', () => {
-        renderListAndMarkers(pizzeriasGeoJSON.features);
+        fetch('/pizzerias_pachuca.geojson')
+            .then(res => res.json())
+            .then(data => {
+                geojsonData = data;
+                applyFilters();
+            })
+            .catch(err => console.error("Error al cargar GeoJSON:", err));
     });
+
+    // Función para cambiar el estilo del mapa dinámicamente
+    function changeMapStyle(styleUrl) {
+        map.setStyle(styleUrl);
+    }
+
+    // Centrado inteligente que abarca todos los puntos en Hidalgo
+    function fitHidalgoBounds() {
+        if (!geojsonData.features.length) return;
+        
+        const bounds = new mapboxgl.LngLatBounds();
+        geojsonData.features.forEach(f => bounds.extend(f.geometry.coordinates));
+        map.fitBounds(bounds, { padding: 50, maxZoom: 14 });
+    }
+
+    // Filtrado combinado (Búsqueda por texto + Municipio)
+    function applyFilters() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const selectedMuni = document.getElementById('muniSelect').value;
+
+        const filtered = geojsonData.features.filter(f => {
+            const p = f.properties;
+            const name = (p.name || "").toLowerCase();
+            const address = (p.address || "").toLowerCase();
+            const colonia = (p.colonia || "").toLowerCase();
+            const brand = (p.brand || "").toLowerCase();
+            const municipio = p.municipio || "";
+
+            const matchesText = name.includes(query) || address.includes(query) || colonia.includes(query) || brand.includes(query);
+            const matchesMuni = (selectedMuni === 'todos') || (municipio === selectedMuni);
+
+            return matchesText && matchesMuni;
+        });
+
+        renderListAndMarkers(filtered);
+    }
 
     function renderListAndMarkers(features) {
         const listContainer = document.getElementById('pizzeria-list');
         listContainer.innerHTML = '';
         markers.forEach(m => m.remove());
         markers.length = 0;
+
+        // Actualizar métricas del dashboard
+        document.getElementById('count-visible').innerText = features.length;
+        const uniqueMunis = new Set(features.map(f => f.properties.municipio));
+        document.getElementById('count-munis').innerText = uniqueMunis.size;
 
         features.forEach(feature => {
             const props = feature.properties;
@@ -244,20 +367,25 @@
             const card = document.createElement('div');
             card.className = 'pizza-card';
             card.innerHTML = `
-                <h3>${props.nombre}</h3>
-                <p>${props.direccion}</p>
-                <span class="badge">${props.brand}</span> ⭐ ${props.rating}
+                <h3>${props.name}</h3>
+                <p>📍 ${props.address} (${props.colonia})</p>
+                <div class="pizza-info-extra">📞 ${props.telefono} | 🕒 ${props.horario}</div>
+                <div class="badges-container">
+                    <span class="badge">${props.brand}</span>
+                    <span class="badge badge-muni">${props.municipio}</span>
+                </div>
             `;
-            card.onclick = () => flyToLocation(coords, props);
+            card.onclick = () => flyToLocation(coords);
             listContainer.appendChild(card);
 
             const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
-                <div class="popup-title">${props.nombre}</div>
-                <div class="popup-address">${props.direccion}</div>
+                <div class="popup-title">${props.name}</div>
+                <div class="popup-address">${props.address}, ${props.municipio}</div>
+                <div class="popup-phone">📞 ${props.telefono}</div>
                 <a class="popup-btn" href="https://www.google.com/maps/search/?api=1&query=${coords[1]},${coords[0]}" target="_blank">Cómo llegar</a>
             `);
 
-            const marker = new mapboxgl.Marker({ color: '#e65100' })
+            const marker = new mapboxgl.Marker({ color: '#d84315' })
                 .setLngLat(coords)
                 .setPopup(popup)
                 .addTo(map);
@@ -266,22 +394,12 @@
         });
     }
 
-    function flyToLocation(coords, props) {
+    function flyToLocation(coords) {
         map.flyTo({
             center: coords,
             zoom: 15.5,
             essential: true
         });
-    }
-
-    function filterPizzerias() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const filtered = pizzeriasGeoJSON.features.filter(f => 
-            f.properties.nombre.toLowerCase().includes(query) ||
-            f.properties.direccion.toLowerCase().includes(query) ||
-            f.properties.brand.toLowerCase().includes(query)
-        );
-        renderListAndMarkers(filtered);
     }
 </script>
 </body>
